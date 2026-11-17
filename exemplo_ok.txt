@@ -1,0 +1,24 @@
+num soma(num a, num b) {
+    return a + b;
+}
+
+num principal(num limite) {
+    num contador = 0;
+    num total = 0;
+
+    while (contador < limite) {
+        total = total + soma(contador, 1);
+        if (total >= 10) {
+            break;
+        } elif (contador == 3) {
+            num extra = 2;
+            total = total + extra;
+        } else {
+            num contador = 99;
+            total = total + 1;
+        }
+        contador = contador + 1;
+    }
+
+    return total;
+}

@@ -1,6 +1,6 @@
 """Lê tokens.tsv, alimenta o parser ANTLR via ListTokenSource e mostra a árvore."""
 import sys
-
+from semantic_visitor import SemanticVisitor
 from antlr4 import CommonTokenStream
 from antlr4.ListTokenSource import ListTokenSource
 from antlr4.Token import CommonToken, Token
@@ -94,12 +94,24 @@ def main():
     print(arvore.toStringTree(recog=parser))
 
     if coletor.erros:
-        print("\nERROS SINTÁTICOS")
+        print("\nERROS SINTÁTICOS (análise semântica não executada)")
         for e in coletor.erros:
             print(e)
         sys.exit(1)
-    print("\nSem erros sintáticos.")
 
+    visitor = SemanticVisitor()
+    visitor.visit(arvore)
+
+    print("\nTABELA DE SÍMBOLOS")
+    print(visitor.tabela.dump())
+
+    print("RESULTADO SEMÂNTICO")
+    if visitor.erros:
+        for e in visitor.erros:
+            print(e)
+        print(f"\n{len(visitor.erros)} erro(s) semântico(s).")
+        sys.exit(1)
+    print("Análise semântica concluída sem erros.")
 
 if __name__ == "__main__":
     main()
