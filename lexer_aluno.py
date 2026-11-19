@@ -144,8 +144,7 @@ SIMBOLOS: dict[str, str] = {
     "}": "CHAVE_DIR",
     ";": "PONTO_VIRGULA",
     ",": "VIRGULA",
-    "[": "COLC_ESQ",
-    "]": "COLC_DIR",
+
 }
 
 # Tabela combinada (operadores + símbolos). Usada no trie e na
