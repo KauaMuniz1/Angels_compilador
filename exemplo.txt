@@ -1,6 +1,6 @@
-num principal(num limite) {
-    num contador = 0;
-    num total = 0;
+int principal(int limite) {
+    int contador = 0;
+    int total = 0;
 
     while (contador < limite) {
         total = total + soma(contador, 1);

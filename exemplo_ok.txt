@@ -1,20 +1,20 @@
-num soma(num a, num b) {
+int soma(int a, int b) {
     return a + b;
 }
 
-num principal(num limite) {
-    num contador = 0;
-    num total = 0;
+int principal(int limite) {
+    int contador = 0;
+    int total = 0;
 
     while (contador < limite) {
         total = total + soma(contador, 1);
         if (total >= 10) {
             break;
         } elif (contador == 3) {
-            num extra = 2;
+            int extra = 2;
             total = total + extra;
         } else {
-            num contador = 99;
+            int contador = 99;
             total = total + 1;
         }
         contador = contador + 1;

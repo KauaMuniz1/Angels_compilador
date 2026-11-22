@@ -30,7 +30,7 @@ statement
 bloco : '{' statement* '}' ;
 
 // Tipo disponível na linguagem
-tipo : T_NUM ;
+tipo : T_INT | T_FLOAT ;
 
 // Declaração de variável
 varDecl : tipo ID ('=' expr)? ;
@@ -88,7 +88,8 @@ chamadaFuncao : ID '(' argumentos? ')' ;
 argumentos : expr (',' expr)* ;
 
 // Palavras reservadas
-T_NUM  : 'num' ;
+T_INT   : 'int' ;
+T_FLOAT : 'float' ;
 IF     : 'if' ;
 ELIF   : 'elif' ;
 ELSE   : 'else' ;

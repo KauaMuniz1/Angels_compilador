@@ -111,7 +111,8 @@ PALAVRAS_RESERVADAS: dict[str, str] = {
     # "swap": "SWITCH",
     # "case": "CASE",
     "return": "RETURN",
-    "num": "NUM",
+    "int": "T_INT",
+    "float": "T_FLOAT",
     "break": "BREAK", 
 }
 
