@@ -5,11 +5,12 @@ from dataclasses import dataclass
 @dataclass
 class Simbolo:
     nome: str
-    tipo: str        #"int ou float (para funcao: tipo de retorno   )"
-    categoria: str   #"variavel" | "parametro" | "funcao"
+    tipo: str        # int ou float
+    categoria: str   # "variavel" | "parametro" | "funcao"
     linha: int
-    escopo: str    #global ou local
-    params: list | None = None   #só para função: tipos dos parâmetros, em ordem
+    escopo: str      # global ou local
+    params: list | None = None   # só para função: tipos dos parâmetros, em ordem
+
 
 class TabelaDeSimbolos:
     def __init__(self):
@@ -27,13 +28,13 @@ class TabelaDeSimbolos:
         n = len(self._escopos) - 1
         return "global" if n == 0 else f"local (nível {n})"
 
-    def declarar(self, nome, tipo, categoria, linha):
+    def declarar(self, nome, tipo, categoria, linha, params=None):
         """Insere no escopo atual. Devolve None se o nome já existe nele
         (declaração duplicada); senão devolve o símbolo criado."""
         atual = self._escopos[-1]
         if nome in atual:
             return None
-        simbolo = Simbolo(nome, tipo, categoria, linha, self._nome_escopo())
+        simbolo = Simbolo(nome, tipo, categoria, linha, self._nome_escopo(), params)
         atual[nome] = simbolo
         self._historico.append(simbolo)
         return simbolo
