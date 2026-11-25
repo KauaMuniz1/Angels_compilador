@@ -5,11 +5,11 @@ from dataclasses import dataclass
 @dataclass
 class Simbolo:
     nome: str
-    tipo: str        # "num"
-    categoria: str   # "variavel" | "parametro" | "funcao"
+    tipo: str        #"int ou float (para funcao: tipo de retorno   )"
+    categoria: str   #"variavel" | "parametro" | "funcao"
     linha: int
-    escopo: str      # "global" ou "local (nível N)"
-
+    escopo: str    #global ou local
+    params: list | None = None   #só para função: tipos dos parâmetros, em ordem
 
 class TabelaDeSimbolos:
     def __init__(self):
